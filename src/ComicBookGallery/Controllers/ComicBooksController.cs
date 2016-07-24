@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComicBookGallery.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,21 @@ namespace ComicBookGallery.Controllers
         public ActionResult Detail()
         {
 
+            var comicBook = new ComicBook()
+            {
+                SeriesTitle = "The Amazing Spiderman",
+                IssueNumber = 700,
+                DescriptionHtml = "<p>Final issue!Witness the final hours of Doctor Octopus' life and his one, last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>",
+                Artists = new Artist[]
+                {
+                    new Artist() { Name = "Dan Scott", Role = "Script" },
+                    new Artist() { Name = "Humberto Ramos", Role = "Pencils" },
+                    new Artist() { Name = "Victor Olazaba", Role = "Inks" },
+                    new Artist() { Name = "Edgar Delgado", Role = "Colors" },
+                    new Artist() { Name = "Chris Eliopolous", Role = "Letters" }
+                }
+        };
+
             //if (DateTime.Today.DayOfWeek == DayOfWeek.Sunday)
             //{
             //    return Redirect("/");
@@ -19,19 +35,9 @@ namespace ComicBookGallery.Controllers
 
             //return Content("Hello There");
 
-            ViewBag.SeriesTitle = "The Amazing Spiderman";
-            ViewBag.IssueNumber = 700;
-            ViewBag.Description = "<p>Final issue!Witness the final hours of Doctor Octopus' life and his one, last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>";
-            ViewBag.Artists = new string[]
-            {
-                "script: dan slott",
-                "pencils: humberto ramos",
-                "inks: victor olazaba",
-                "colors: edgar delgado",
-                "letters: chris eliopoulos"
-            };
 
-            return View();
+
+            return View(comicBook);
 
 
 
